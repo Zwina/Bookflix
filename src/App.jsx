@@ -13,7 +13,6 @@ import SignupPage from "./pages/signup";
 import Musiques from "./pages/Musiques";
 import Film from "./pages/Film";
 import Livres from "./pages/Livres";
-import Details from "./Components/Details/Details";
 import Banner from "./Components/Header/Banner";
 import Accueil from "./pages/Accueil";
 import NewItem from "./pages/NewItem";
@@ -47,7 +46,7 @@ function App() {
           <Routes>
             <Route exact path="/" element={<Accueil />} />
             <Route exact path="/essai" element={<Essai />} />
-            <Route path="/musiques" element={<Musiques />} />
+            <Route path="/#/musiques" element={<Musiques />} />
             <Route path="/films" element={<Film />} />
             <Route path="/livres" element={<Livres />} />
 
