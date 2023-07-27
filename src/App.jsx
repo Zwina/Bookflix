@@ -23,6 +23,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import NavOne from "./Components/Header/Nav";
 import Footer from "./Components/Footer/Footer";
+import Essai from "./pages/Essai";
 
 function App() {
   const { token, login, logout, userId } = useAuth();
@@ -45,6 +46,7 @@ function App() {
 
           <Routes>
             <Route exact path="/" element={<Accueil />} />
+            <Route exact path="/essai" element={<Essai />} />
             <Route path="/musiques" element={<Musiques />} />
             <Route path="/films" element={<Film />} />
             <Route path="/livres" element={<Livres />} />
