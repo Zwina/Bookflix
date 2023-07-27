@@ -1,0 +1,8 @@
+.blue-icon {
+  color: #646CFF; /* Set the color to blue */
+  transition: color 0.3s; /* Add a smooth transition effect on hover */
+}
+
+.blue-icon:hover {
+  color: #747BFF; /* Change the color on hover to achieve the hover effect */
+}

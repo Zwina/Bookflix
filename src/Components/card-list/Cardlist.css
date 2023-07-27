@@ -1,0 +1,13 @@
+.card-list {
+   
+    margin: 0 auto;
+    margin-bottom: 100px;
+    display: inline-flex;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 20px;
+    overflow-x: scroll;
+    overflow-y: hidden;
+
+  }
+
+  

@@ -1,0 +1,15 @@
+.header{
+    background-color: #3d3d3d;
+    height: 200px;
+    text-align: center;
+    margin: 0;
+  }
+  
+  .banner {
+    padding-top: 50px;
+    position: relative; /* Assurez-vous que le conteneur de l'image soit positionné de manière relative */
+    background-image: url("http://localhost:5173/image/banner.jpg");
+    background-size: cover; /* Redimensionne l'image pour couvrir tout le conteneur */
+    background-repeat: no-repeat; /* Empêche la répétition de l'image si elle est plus petite que le conteneur */
+    height: 200px; /* Ajustez la hauteur comme nécessaire */
+  }

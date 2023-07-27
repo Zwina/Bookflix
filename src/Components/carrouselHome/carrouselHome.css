@@ -1,0 +1,9 @@
+.text {
+    color: white; /* Couleur de texte normale */
+  }
+
+  /* Effet de survol */
+  .text:hover {
+    color: yellow; /* Couleur de texte en jaune lors du survol */
+    transition: color 0.3s; /* Transition fluide pour l'effet de survol */
+  }
