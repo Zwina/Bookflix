@@ -33,14 +33,14 @@ function NavOne() {
               <FontAwesomeIcon icon={faHome} className="w-8 h-8 text-white" />{' '}Accueil 
             </Nav.Link>
 
-            <Nav.Link href="/#/films">
+            <Nav.Link href="#/films">
             <FontAwesomeIcon icon={faFilm} className="w-8 h-8 text-white" />{' '}Films
             </Nav.Link>
 
-            <Nav.Link href="/#/musiques">
+            <Nav.Link href="#/musiques">
             <FontAwesomeIcon icon={faMusic} className="w-8 h-8 text-white" />{' '}Musiques
             </Nav.Link>
-            <Nav.Link href="/livres" >
+            <Nav.Link href="#/livres" >
             <FontAwesomeIcon icon={faBook} className="w-8 h-8 text-white" />{' '}Livres
             </Nav.Link>
             
