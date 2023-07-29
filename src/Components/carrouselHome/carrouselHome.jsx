@@ -12,8 +12,8 @@ const YourCarousel = () => {
   return (
     <Container  style={{ marginBottom: '2rem'}}>
       <Row>
-        <Col xs={12} md={4}>
-          <a href="/films"><h2 className="text pb-2">Films</h2></a>
+        <Col xs={12} md={4} className="mb-2 pb-2">
+          <a href="#/films"><h2 className="text pb-2">Films</h2></a>
           <Carousel fade>
             <Carousel.Item interval={2000}>
               <Image
@@ -41,8 +41,8 @@ const YourCarousel = () => {
           </Carousel>
         </Col>
 
-        <Col xs={12} md={4}>
-        <a href="/musiques"><h2 className="text pb-2">Musiques</h2></a>
+        <Col xs={12} md={4} className="mb-2 pb-2">
+        <a href="#/musiques"><h2 className="text pb-2">Musiques</h2></a>
           <Carousel fade>
             <Carousel.Item interval={2000}>
               <Image
@@ -70,8 +70,8 @@ const YourCarousel = () => {
           </Carousel>
         </Col>
 
-        <Col xs={12} md={4}>
-        <a href="/livres"><h2 className="text pb-2">Livres</h2></a>
+        <Col xs={12} md={4} className="mb-2 pb-2">
+        <a href="#/livres"><h2 className="text pb-2">Livres</h2></a>
           <Carousel fade>
             <Carousel.Item interval={2000}>
               <Image
