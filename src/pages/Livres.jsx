@@ -126,7 +126,7 @@ const Livres = () => {
         <div className="col-md-4 d-flex justify-content-center md:justify-content-start">
           <Button
             variant="warning"
-            href="/musiques/new"
+            href="#/livres/new"
             className="btn-sm mt-5 mb-5 d-inline-flex align-items-center"
           >
             <FontAwesomeIcon
