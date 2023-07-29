@@ -89,7 +89,7 @@ function NewItem(props) {
     console.log({ form });
     const addData = async () => {
       try {
-        await fetch(`http://localhost:5000/api/${props.route}`, {
+        await fetch(`https://pea-coat-sockeye.cyclic.app/api/${props.route}`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
