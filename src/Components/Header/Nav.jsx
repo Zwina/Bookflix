@@ -45,7 +45,7 @@ function NavOne() {
             </Nav.Link>
             
             {!auth.isLoggedIn && (
-              <Nav.Link className="nav-link" href="/login">
+              <Nav.Link className="nav-link" href="#/login">
                 <FontAwesomeIcon icon={faUser} className="w-8 h-8 text-white" />{' '}Se connecter
               </Nav.Link>
             )}
