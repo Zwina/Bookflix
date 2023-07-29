@@ -1,6 +1,5 @@
 import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
+import Image from "react-bootstrap/Image";
 import "./banner.css";
 
 function Banner() {
@@ -8,11 +7,12 @@ function Banner() {
     <>
       <div className="banner">
         <Container>
-          <Row>
-          <Col xs={6} sm={4} className="text-white text-center align-items-center justify-content-center" >
-    
-            </Col>
-          </Row>
+        <Image
+                src="/image/banner.jpg"
+                style={{ backgroundSize: "cover", height: "200px", objectFit: "cover", objectPosition: 'center'}}
+                fluid
+                text="Second slide"
+              />
         </Container>
       </div>
     </>
