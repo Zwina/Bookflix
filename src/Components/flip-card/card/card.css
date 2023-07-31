@@ -14,7 +14,7 @@
     box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.8);
     //transform: rotateX(0deg)
     user-select: none;
-    cursor: pointer;
+    //cursor: pointer;
   }
   
   .card-front,
@@ -133,8 +133,35 @@
   .blue-icon {
     color: #646CFF; /* Set the color to blue */
     transition: color 0.3s; /* Add a smooth transition effect on hover */
+    cursor: pointer;
   }
   
   .blue-icon:hover {
     color: #747BFF; /* Change the color on hover to achieve the hover effect */
+    cursor: pointer;
   }
+
+  .orange-icon {
+    color: #F3A847; /* Set the color to blue */
+    transition: color 0.3s; /* Add a smooth transition effect on hover */
+    cursor: pointer;
+    //background: white;
+    //border-radius: 50px;
+  }
+  
+  .orange-icon:hover {
+    color: #E39D42; /* Change the color on hover to achieve the hover effect */
+    cursor: pointer;
+  }
+
+  .red-icon {
+    color: #FF0000; /* Set the color to blue */
+    transition: color 0.3s; /* Add a smooth transition effect on hover */
+    cursor: pointer;
+  }
+  
+  .red-icon:hover {
+    color: #ED0000; /* Change the color on hover to achieve the hover effect */
+    cursor: pointer;
+  }
+

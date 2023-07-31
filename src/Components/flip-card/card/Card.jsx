@@ -13,30 +13,6 @@ function Card2({ onClick, oeuvre, type }) {
 
   return (
     <>
-      {/* {type === "musiques" && (
-        <div className="card3 mt-2">
-          <div className="card-front">
-            <Image
-              src={oeuvre.imageUrl}
-              style={{
-                height: "14rem",
-                objectFit: "cover",
-                objectPosition: "center",
-              }}
-            />
-            <div className="card-content3">
-              <h3>{oeuvre.titre}</h3>
-              <p>
-                {oeuvre.auteur} - {oeuvre.annee}
-              </p>
-              <a href={oeuvre.detail} target="_blank" rel="noopener noreferrer">
-                <FontAwesomeIcon icon={faYoutube} size="2x" className="mt-4" />
-              </a>
-            </div>
-          </div>
-        </div>
-      )} */}
-
       {/* {(type === "livres" || type === "films") && ( */}
         <div className="card2 mt-2 " 
           //onClick={onClick}
@@ -60,6 +36,7 @@ function Card2({ onClick, oeuvre, type }) {
                 height: "14rem",
                 objectFit: "cover",
                 objectPosition: "center",
+                
               }}
             />
             <div className="card-content">
@@ -79,7 +56,7 @@ function Card2({ onClick, oeuvre, type }) {
                 <FontAwesomeIcon
                   icon={faAmazon}
                   size="2x"
-                  className="mt-2 mx-3 blue-icon"
+                  className="mt-2 mx-3 orange-icon"
                 />
                 </a>
               </div>
@@ -96,7 +73,7 @@ function Card2({ onClick, oeuvre, type }) {
                 <FontAwesomeIcon
                   icon={faYoutube}
                   size="2x"
-                  className="mt-2 mx-3 blue-icon"
+                  className="mt-2 mx-3 red-icon"
                 />
                 </a>
               </div>
