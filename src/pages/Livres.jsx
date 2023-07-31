@@ -136,8 +136,8 @@ const Livres = () => {
             Ajouter un livre
           </Button>
         </div>
-        <div className="col-md-4 d-flex justify-content-center md:justify-content-start">
-         <h2 className="text-white mt-5 mb-5">Mes Livres</h2>
+        <div className="col-md-4 d-flex justify-content-center my-auto justify-content-center">
+         <h2 className="text-white text-center">Mes Livres</h2>
         </div>
         <div className="col-md-4 d-flex justify-content-center md:justify-content-end">
           <SearchBox onChildSearchChange={OnParentSearchChange} />

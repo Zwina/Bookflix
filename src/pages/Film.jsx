@@ -138,8 +138,8 @@ const Film = () => {
               Ajouter un film
             </Button>
           </div>
-          <div className="col-md-4 d-flex justify-content-center md:justify-content-start">
-           <h2 className="text-white mt-5 mb-5">Mes Films</h2>
+          <div className="col-md-4 d-flex justify-content-center my-auto justify-content-center">
+           <h2 className="text-white">Mes Films</h2>
           </div>
           <div className="col-md-4 d-flex justify-content-center md:justify-content-end">
             <SearchBox onChildSearchChange={OnParentSearchChange} />

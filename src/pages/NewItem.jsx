@@ -80,6 +80,16 @@ function NewItem(props) {
     //   }
     // }
 
+    if (!itemToControl || itemToControl === "detail") {
+      if (!form.detail) {
+        isFormValid = false;
+        errors.detail = "Le détail doit être renseigné!";
+      } else if (form.detail.length > 500) {
+        isFormValid = false;
+        errors.detail = "Le détail doit contenir moins de 500 caractères!";
+      }
+    }
+
     setErrors(errors);
     return isFormValid;
   };
@@ -87,6 +97,13 @@ function NewItem(props) {
   const formSubmitHandler = async (event) => {
     event.preventDefault();
     console.log({ form });
+  
+    // Validation du formulaire avant l'envoi
+    const isFormValid = handleValidation();
+    if (!isFormValid) {
+      return; // Empêche l'envoi du formulaire s'il n'est pas valide
+    }
+  
     const addData = async () => {
       try {
         await fetch(`https://pea-coat-sockeye.cyclic.app/api/${props.route}`, {
@@ -106,10 +123,9 @@ function NewItem(props) {
       } catch (error) {
         console.log(error.message);
       }
-      // history.push(`/${props.route}`)
       navigate(`/${props.route}`);
     };
-
+  
     addData();
   };
 
@@ -129,18 +145,6 @@ function NewItem(props) {
         <Form.Text style={{ color: "red" }}>{errors.titre}</Form.Text>
       </Form.Group>
 
-      {/* <label htmlFor="titre" className="label-tag">
-        Titre : <span>*</span>
-      </label>
-      <input
-        type="text"
-        id="titre"
-        className="input-tag"
-        placeholder="Renseigner le titre"
-        onChange={(e) => handleChange(e)}
-      />
-      <span className="error-tag">{errors.titre}</span> */}
-
       <Form.Group className="mb-3">
         <Form.Label htmlFor="auteur">
           Auteur : <span>*</span>
@@ -153,18 +157,6 @@ function NewItem(props) {
         />
         <Form.Text style={{ color: "red" }}>{errors.auteur}</Form.Text>
       </Form.Group>
-
-      {/* <label htmlFor="auteur" className="label-tag">
-        Auteur : <span>*</span>
-      </label>
-      <input
-        type="text"
-        id="auteur"
-        className="input-tag"
-        placeholder="Renseigner l'auteur"
-        onChange={(e) => handleChange(e)}
-      />
-      <span className="error-tag">{errors.auteur}</span> */}
 
       <Form.Group className="mb-3">
         <Form.Label htmlFor="annee">
@@ -179,18 +171,6 @@ function NewItem(props) {
         <Form.Text style={{ color: "red" }}>{errors.annee}</Form.Text>
       </Form.Group>
 
-      {/* <label htmlFor="annee" className="label-tag">
-        Année : <span>*</span>
-      </label>
-      <input
-        type="text"
-        id="annee"
-        className="input-tag"
-        placeholder="Renseigner l'année"
-        onChange={(e) => handleChange(e)}
-      />
-      <span className="error-tag">{errors.annee}</span> */}
-
       <Form.Group className="mb-3">
         <Form.Label htmlFor="imageUrl">
           Image : <span>*</span>
@@ -203,17 +183,6 @@ function NewItem(props) {
         />
         <Form.Text style={{ color: "red" }}>{errors.image}</Form.Text>
       </Form.Group>
-
-      {/* <label htmlFor="imageUrl" className="label-tag">
-        Image : <span>*</span>
-      </label>
-      <input
-        type="text"
-        id="imageUrl"
-        className="input-tag"
-        placeholder="Renseigner l'image"
-        onChange={(e) => handleChange(e)} 
-      />*/}
 
       <Form.Group className="mb-3">
         <Form.Label htmlFor="detail">
@@ -230,24 +199,10 @@ function NewItem(props) {
         <Form.Text style={{ color: "red" }}>{errors.detail}</Form.Text>
       </Form.Group>
 
-      {/* <label htmlFor="detail" className="label-tag">
-        Détails : <span>*</span>
-      </label>
-      <input
-        type="text"
-        id="detail"
-        className="input-tag"
-        placeholder="Renseigner les détails"
-        onChange={(e) => handleChange(e)}
-      /> */}
-
       <Button variant="primary" type="submit">
         Valider
       </Button>
 
-      {/* <button type="submit" className="button-tag">
-        Valider
-      </button> */}
     </Form>
     </Container>
   );
