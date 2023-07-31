@@ -17,6 +17,7 @@ function NewItem(props) {
     auteur: "",
     imageUrl: "",
     detail: "",
+    detailUrl: ""
   });
 
   const handleChange = (e) => {
@@ -118,6 +119,7 @@ function NewItem(props) {
             titre: form.titre,
             imageUrl: form.imageUrl,
             detail: form.detail,
+            detailUrl: form.detailUrl
           }),
         });
       } catch (error) {
@@ -198,6 +200,21 @@ function NewItem(props) {
         />
         <Form.Text style={{ color: "red" }}>{errors.detail}</Form.Text>
       </Form.Group>
+
+      <Form.Group className="mb-3">
+        <Form.Label htmlFor="detailUrl">
+          Url de détail : <span>*</span>
+        </Form.Label>
+        <Form.Control
+          type="text"
+          id="detailUrl"
+          placeholder="Renseigner l'url amazon, youtube, etc"
+          onChange={(e) => handleChange(e)}
+        />
+        <Form.Text style={{ color: "red" }}>{errors.detailUrl}</Form.Text>
+      </Form.Group>
+
+      
 
       <Button variant="primary" type="submit">
         Valider

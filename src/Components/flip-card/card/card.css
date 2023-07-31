@@ -63,6 +63,13 @@
     align-items: center;
     position: absolute;
   }
+
+  .card-icon {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: absolute;
+  }
   
   .card-content h3 {
     margin: 0;
