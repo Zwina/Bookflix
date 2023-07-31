@@ -8,8 +8,8 @@ import { faYoutube, faAmazon } from "@fortawesome/free-brands-svg-icons";
 import { faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 
 function Card2({ onClick, oeuvre, type }) {
-  console.log("type", type);
-  console.log("oeuvre", oeuvre);
+  //console.log("type", type);
+  //console.log("oeuvre", oeuvre);
 
   return (
     <>
