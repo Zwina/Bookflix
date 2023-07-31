@@ -1,6 +1,10 @@
-import React, { useState, useEffect } from "react";
+import { AuthContext } from "../context/auth-context";
+
+import React, { useContext, useState, useEffect } from "react";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
+import OverlayTrigger from "react-bootstrap/OverlayTrigger";
+import Tooltip from "react-bootstrap/Tooltip";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
@@ -73,8 +77,14 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 ]*/
 
+const renderTooltip = (props) => (
+  <Tooltip id="button-tooltip" {...props}>
+    Vous devez être connecté pour ajouter ou modifier une musique
+  </Tooltip>
+);
+
 const Musiques = () => {
-  
+  const auth = useContext(AuthContext);
   const [musiques, setMusiques] = useState([]);
   const [searchField, setSearchField] = useState("");
   const [error, setError] = useState("");
@@ -115,7 +125,24 @@ const Musiques = () => {
   return (
     <Container fluid>
       <div className="row">
-          <div className="col-md-4 d-flex justify-content-center md:justify-content-start">
+        <div className="col-md-4 d-flex justify-content-center md:justify-content-start">
+          {!auth.isLoggedIn && (
+            <OverlayTrigger
+              placement="bottom"
+              delay={{ show: 250, hide: 400 }}
+              overlay={renderTooltip}
+            >
+              <Button
+                variant="warning"
+                href="#/login"
+                className="btn-sm mt-5 mb-5 d-inline-flex align-items-center"
+              >
+                Connexion
+              </Button>
+            </OverlayTrigger>
+          )}
+
+          {auth.isLoggedIn && (
             <Button
               variant="warning"
               href="#/musiques/new"
@@ -127,14 +154,15 @@ const Musiques = () => {
               />{" "}
               Ajouter une musique
             </Button>
-          </div>
-          <div className="col-md-4 d-flex justify-content-center my-auto justify-content-center">
-           <h2 className="text-white">Mes Musiques</h2>
-          </div>
-          <div className="col-md-4 d-flex justify-content-center md:justify-content-end">
-            <SearchBox onChildSearchChange={OnParentSearchChange} />
-          </div>
-        <Cardlist oeuvres={filteredMusiques} type='musiques'/>
+          )}
+        </div>
+        <div className="col-md-4 d-flex justify-content-center my-auto justify-content-center">
+          <h2 className="text-white">Mes Musiques</h2>
+        </div>
+        <div className="col-md-4 d-flex justify-content-center md:justify-content-end">
+          <SearchBox onChildSearchChange={OnParentSearchChange} />
+        </div>
+        <Cardlist oeuvres={filteredMusiques} type="musiques" />
       </div>
     </Container>
   );
