@@ -37,7 +37,7 @@ function NewItem(props) {
         isFormValid = false;
         errors.titre = "Le titre doit être renseigné!";
       } else if (typeof form.titre !== undefined) {
-        if (!form.titre.match(/^[0-9a-zA-Z\- ]+$/)) {
+        if (!form.titre.match(/^[0-9a-zA-ZÀ-ÿ\-:' ]+$/)) {
           isFormValid = false;
           errors.titre = "Ne doit contenir que des lettres ou des chiffres!";
         }
@@ -192,7 +192,7 @@ function NewItem(props) {
         </Form.Label>
         <Form.Control
           as="textarea"
-          rows={3}
+          rows={5}
           type="text"
           id="detail"
           placeholder="Renseigner les détails (lien youtube, résumé, etc)"

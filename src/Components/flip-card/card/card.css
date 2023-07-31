@@ -165,3 +165,13 @@
     cursor: pointer;
   }
 
+.icon-modify{
+  position : absolute;
+  top: 0; /* Place l'icône en haut */
+  right: 0; /* Place l'icône tout à droite */
+  margin: 10px; /* Ajoute une marge autour de l'icône si nécessaire */
+  color: #FFC107;
+  padding : 5px;
+  background: #141414;
+  border-radius : 5px;
+}

@@ -71,11 +71,6 @@ function App() {
               />
             )}
 
-            {/* <Route
-              path="/musiques/new"
-              element={<NewItem route="musiques" />}
-            /> */}
-
             {!token && <Route path="/films/new" element={<Accueil />} exact />}
             {token && (
               <Route
@@ -84,12 +79,6 @@ function App() {
                 replace
               />
             )}
-
-            {/* <Route
-              path="/films/new"
-              element={<NewItem route="films" />}
-              exact
-            /> */}
 
             {!token && <Route path="/livres/new" element={<Accueil />} exact />}
             {token && (
@@ -100,12 +89,38 @@ function App() {
               />
             )}
 
-            {/* <Route path="/livres/new" element={<NewItem route="livres" />} /> */}
+            {!token && (
+              <Route path="/livres/update/*" element={<Accueil />} exact />
+            )}
+            {token && (
+              <Route
+                path="/livres/update/:itemId"
+                element={<UpdateItem route="livres" />}
+                replace
+              />
+            )}
 
             {!token && (
-              <Route path="/update" element={<Navigate to="/" replace />} />
+              <Route path="/musiques/update/*" element={<Accueil />} exact />
             )}
-            {token && <Route path="/update" element={<UpdateItem />} />}
+            {token && (
+              <Route
+                path="/musiques/update/:itemId"
+                element={<UpdateItem route="musiques" />}
+                replace
+              />
+            )}
+
+            {!token && (
+              <Route path="/films/update/*" element={<Accueil />} exact />
+            )}
+            {token && (
+              <Route
+                path="/films/update/:itemId"
+                element={<UpdateItem route="films" />}
+                replace
+              />
+            )}
           </Routes>
 
           {/* <Route path="/" exact>

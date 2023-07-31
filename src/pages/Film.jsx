@@ -1,14 +1,18 @@
-import React, { useState, useEffect } from 'react'
+import { AuthContext } from "../context/auth-context";
+
+import React, { useContext, useState, useEffect } from "react";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
+import OverlayTrigger from "react-bootstrap/OverlayTrigger";
+import Tooltip from "react-bootstrap/Tooltip";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 
-import Cardlist from '../Components/card-list/Cardlist'
-import SearchBox from '../Components/search-box/SearchBox';
+import Cardlist from "../Components/card-list/Cardlist";
+import SearchBox from "../Components/search-box/SearchBox";
 
-import 'bootstrap/dist/css/bootstrap.min.css';
+import "bootstrap/dist/css/bootstrap.min.css";
 
 /*let FILMS = [
     {
@@ -79,53 +83,72 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 ]*/
+const renderTooltip = (props) => (
+  <Tooltip id="button-tooltip" {...props}>
+    Vous devez être connecté pour ajouter ou modifier un film
+  </Tooltip>
+);
 
 const Film = () => {
-  
-  const [films, setFilms] = useState([])
-  const [searchField, setSearchField] = useState('')
-  const [error, setError] = useState('');
+  const auth = useContext(AuthContext);
+  const [films, setFilms] = useState([]);
+  const [searchField, setSearchField] = useState("");
+  const [error, setError] = useState("");
 
   useEffect(() => {
-    fetch('https://pea-coat-sockeye.cyclic.app/api/films', {
+    fetch("https://pea-coat-sockeye.cyclic.app/api/films", {
       method: "GET",
-      headers:{
-        'Content-Type' : 'application/json'
-      }
-    }).then(res => {
-      if (res.status !== 200 && res.status !== 201){
-        throw new Error('Erreur lors de la récupération du film')
-      }
-      return res.json()
-    }).then(res => {
-      setFilms(res.films)
-    }).catch(error => {
-      console.log(error)
-      setError(error.message)
+      headers: {
+        "Content-Type": "application/json",
+      },
     })
-  }, [])
+      .then((res) => {
+        if (res.status !== 200 && res.status !== 201) {
+          throw new Error("Erreur lors de la récupération du film");
+        }
+        return res.json();
+      })
+      .then((res) => {
+        setFilms(res.films);
+      })
+      .catch((error) => {
+        console.log(error);
+        setError(error.message);
+      });
+  }, []);
 
-
-
-
-  const OnParentSearchChange = event => {
+  const OnParentSearchChange = (event) => {
     // alert ('');
     //console.log(event.target.value);
     setSearchField(event.target.value);
-  }
+  };
 
-  //const filteredFilms = FILMS.filter((film) => 
-  const filteredFilms = films.filter((film) => 
+  //const filteredFilms = FILMS.filter((film) =>
+  const filteredFilms = films.filter((film) =>
     film.titre.toLowerCase().includes(searchField.toLowerCase())
   );
-  
-  
 
-  
   return (
     <Container fluid>
       <div className="row">
-          <div className="col-md-4 d-flex justify-content-center md:justify-content-start">
+        <div className="col-md-4 d-flex justify-content-center md:justify-content-start">
+          {!auth.isLoggedIn && (
+            <OverlayTrigger
+              placement="bottom"
+              delay={{ show: 250, hide: 400 }}
+              overlay={renderTooltip}
+            >
+              <Button
+                variant="warning"
+                href="#/login"
+                className="btn-sm mt-5 mb-5 d-inline-flex align-items-center"
+              >
+                Connexion
+              </Button>
+            </OverlayTrigger>
+          )}
+
+          {auth.isLoggedIn && (
             <Button
               variant="warning"
               href="#/films/new"
@@ -137,17 +160,18 @@ const Film = () => {
               />{" "}
               Ajouter un film
             </Button>
-          </div>
-          <div className="col-md-4 d-flex justify-content-center my-auto justify-content-center">
-           <h2 className="text-white">Mes Films</h2>
-          </div>
-          <div className="col-md-4 d-flex justify-content-center md:justify-content-end">
-            <SearchBox onChildSearchChange={OnParentSearchChange} />
-          </div>
-        <Cardlist oeuvres={filteredFilms} type='films'/>
+          )}
+        </div>
+        <div className="col-md-4 d-flex justify-content-center my-auto justify-content-center">
+          <h2 className="text-white">Mes Films</h2>
+        </div>
+        <div className="col-md-4 d-flex justify-content-center md:justify-content-end">
+          <SearchBox onChildSearchChange={OnParentSearchChange} />
+        </div>
+        <Cardlist oeuvres={filteredFilms} type="films" />
       </div>
     </Container>
-  )
-}
+  );
+};
 
-export default Film
+export default Film;
