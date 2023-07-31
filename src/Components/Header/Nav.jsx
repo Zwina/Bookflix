@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState  } from "react";
 import { AuthContext } from "../../context/auth-context";
 
 import Container from "react-bootstrap/Container";
@@ -13,10 +13,13 @@ import "./banner.css";
 
 function NavOne() {
   const auth = useContext(AuthContext);
+   const [navExpanded, setNavExpanded] = useState(false);
+   const handleNavClose = () => setNavExpanded(false);
+
   return (
-    <Navbar  expand="lg" bg="dark" data-bs-theme="dark">
+    <Navbar  expand="lg" bg="dark" data-bs-theme="dark" expanded={navExpanded}>
         <Container fluid>
-          <Navbar.Brand href="/">
+          <Navbar.Brand href="/" onClick={handleNavClose}>
             <img
               alt="icon"
               src="/image/logo.jpg"
@@ -26,9 +29,9 @@ function NavOne() {
             />{" "}
             BookFlix
           </Navbar.Brand>
-          <Navbar.Toggle aria-controls="navbarScroll" />
+          <Navbar.Toggle aria-controls="navbarScroll" onClick={() => setNavExpanded((prevExpanded) => !prevExpanded)}/>
           <Navbar.Collapse id="navbarScroll" className="justify-content-end">
-          <Nav >
+          <Nav className={navExpanded ? "show" : "hide"} onClick={handleNavClose}>
             <Nav.Link href="/" exact="true">
               <FontAwesomeIcon icon={faHome} className="w-8 h-8 text-white" />{' '}Accueil 
             </Nav.Link>
